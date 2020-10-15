@@ -622,7 +622,8 @@ main .visually-hidden {
   box-shadow: -0.3rem 0.3rem 0 #6A81AD, 0.3rem -0.3rem 0 gold;
 }
 .projects-gallery-card img {
-  width: 100%;
+  width: calc(100% - 2rem);
+  margin: 1rem;
 }
 .projects-gallery-card-caption {
   position: absolute;

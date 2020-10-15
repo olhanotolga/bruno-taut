@@ -280,7 +280,8 @@ main {
 		box-shadow: -0.3rem 0.3rem 0 $blue, 0.3rem -0.3rem 0 $yellow;
 
 		img {
-			width: 100%;
+			width: calc(100% - 2rem);
+			margin: 1rem;
 		}
 		&-caption {
 			position: absolute;
