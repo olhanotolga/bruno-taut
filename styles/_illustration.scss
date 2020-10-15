@@ -1,0 +1,170 @@
+.illustration {
+	width: 100vw;
+	height: 30vw;
+	background-color: $windows;
+	display: grid;
+	grid-template-columns: 1fr 3fr 2fr 3fr 1fr;
+	gap: 0.1rem;
+	
+	.major-section {
+		background-color: $facade;
+	}
+	
+	// the middle section with 4 windows
+
+	.win {
+		@include win-half-win(35%, 5%, 12%);
+	}
+
+	// the section with a vertical window and doors
+
+	.door {
+		display: grid;
+		grid-template-columns: 4fr 5fr 4fr;
+		grid-template-rows: 1fr 5fr;
+		border-top: 0.1rem solid $windows;
+
+		&-upper-part {
+			background-color: $blue;
+			grid-column: span 3;
+			display: flex;
+			justify-content: space-evenly;
+			align-items: flex-end;
+
+			&-window {
+				@include small-top-window(3%, 5%)
+			}
+		}
+
+		&-segment {
+			display: grid;
+			grid-row: 2 / span 1;
+		}
+		&-segment.side {
+			display: grid;
+			grid-template-rows: 26fr 21fr 8fr;
+
+			.upper-window-part {
+				display: grid;
+				grid-template-rows: 11fr 5fr;
+
+				&-window {
+					@include side-window-part;
+				}
+
+				.window-left {
+					@include left-window;
+					@include upper-window;
+				}
+				.window-right {
+					@include right-window;
+					@include upper-window;
+				}
+			}
+			.lower-window-part {
+				display: grid;
+				grid-template-rows: 5fr 2fr;
+
+				&-window {
+					@include side-window-part;
+				}
+
+				.window-left {
+					@include left-window;
+					@include lower-window;
+				}
+				.window-right {
+					@include right-window;
+					@include lower-window;
+				}
+			}
+
+			.lower-brick-part {
+				background-color: $brick;
+				display: flex;
+    			justify-content: center;
+    			align-items: center;
+			}
+			
+			.balcony {
+				border-top: 0.2rem solid $windows;
+				box-shadow: 0px -1px $brick;
+				background-color: $facade;
+			}
+		}
+		&-segment.center {
+			display: grid;
+			grid-template-rows: 21fr 8fr 1fr;
+			justify-items: center;
+			border-left: 0.3rem solid $brick;
+			border-right: 0.3rem solid $brick;
+			border-top: 0.3rem solid $windows;
+			
+			.vertical-window-part {
+				background-color: $windows;
+				height: 75%;
+				width: 20%;
+				margin-top: 32%;
+				border: 0.1rem solid $black;
+				box-shadow: 0.1rem -0.1rem 0 $yellow, -0.1rem 0.1rem 0 $yellow, -0.1rem -0.1rem 0 $yellow, 0.1rem 0.1rem 0 $yellow;
+				display: grid;
+				grid-template-rows: repeat(8, 1fr);
+				gap: 0.1rem;
+
+				&-eighth {
+					border: 0.1rem solid $white;
+					// background-image: linear-gradient(65deg, $windows 39%, #444 67%, $windows);
+				}
+			}
+			.doors-part {
+				width: 40%;
+				height: 100%;
+				background-color: $brick;
+				border-top: 0.1rem solid $windows;
+				border-bottom: 0.1rem solid $windows;
+
+				.black-doors {
+					width: 77%;
+					height: 100%;
+					background-color: $black;
+					margin: 0 auto;
+
+					.yellow-doors {
+						width: 68%;
+						height: 100%;
+						background-color: $yellow;
+						margin: 0 auto;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						.glass-doors {
+							height: 75%;
+							width: 50%;
+							background-color: $white;
+							display: grid;
+							grid-template-rows: repeat(3, 1fr);
+
+							&-segment {
+								background-color: black;
+								border: 0.2rem solid $white;
+							}
+						}
+					}
+				}
+			}
+			.step-part {
+				height: 100%;
+				width: 100%;
+				background-color: $brick;
+			}
+		}
+	}
+
+	// the section with 2 windows — corresponds to a half of the central windows section
+
+	.half-win {
+		@include win-half-win(70%, 10%, 24%);
+		
+	}
+}

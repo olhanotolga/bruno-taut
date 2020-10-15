@@ -1,0 +1,140 @@
+// HEADER ILLUSTRATION
+
+@mixin win-half-win($large-window-width, $small-top-window-width, $small-double-window-width) {
+	border-top: 0.3rem solid $windows;
+	display: grid;
+	grid-template-rows: 3fr repeat(2, 6fr) 2fr;
+
+	&-segment {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+
+		&-small-window {
+			@include small-top-window($small-top-window-width, 0);
+		}
+		&-large-window {
+			background-color: $windows;
+			width: $large-window-width;
+			height: 50%;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 0.1rem;
+			border: 0.1rem solid $windows;
+			box-shadow: 0.2rem 0px 0 $yellow, -0.2rem 0px 0 $yellow;
+			
+			&-third {
+				background-color: $windows;
+				grid-area: span 1;
+				border: 0.1rem solid $facade;
+				// background-image: linear-gradient(65deg, $windows 39%, #444 67%, $windows);
+			}
+		}
+		&-small-double-window {
+			background-color: $facade;
+			width: $small-double-window-width;
+			height: 30%;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.2rem;
+			
+			&-half {
+				background-color: $windows;
+			}
+		}
+	}
+
+	&-segment:nth-of-type(4) {
+		background-color: $brick;
+	}
+}
+
+@mixin side-window-part {
+	background-color: $blue;
+}
+
+@mixin upper-window {
+	height: 67%;
+	margin: 32% auto 0 auto;
+}
+@mixin lower-window {
+	height: 77%;
+	margin: 19% auto 0 auto;
+}
+
+@mixin door-segment-window {
+	width: 75%;
+	background-color: $blue;
+	padding: 0 0.2rem;
+	border-top: 0.1rem solid $black;
+	border-bottom: 0.1rem solid $black;
+	display: grid;
+	gap: 0.1rem;
+	
+	&-segment {
+		background-color: $windows;
+		border: 0.1rem solid $white;
+		box-shadow: 0.1rem 0.1rem 0 0 $black, -0.1rem -0.1rem 0 0 $black, -0.1rem 0.1rem 0 0 $black, 0.1rem -0.1rem 0 0 $black;
+		// background-image: linear-gradient(65deg, $windows 39%, #444 67%, $windows);
+	}
+	.segment-1 {
+		grid-area: one;
+	}
+	.segment-2 {
+		grid-area: two;
+	}
+	.segment-3 {
+		grid-area: three;
+	}
+	.segment-4 {
+		grid-area: four;
+	}
+	.segment-5 {
+		grid-area: five;
+	}
+}
+
+@mixin left-window {
+	@include door-segment-window;
+
+	grid-template-areas:
+		"one one one two two three three"
+		"four four four two two three three"
+		"four four four five five five five";
+}
+
+@mixin right-window {
+	@include door-segment-window;
+
+	grid-template-areas:
+		"one one two two three three three"
+		"one one two two four four four"
+		"five five five five four four four";
+}
+
+@mixin small-top-window($width, $margin-bottom) {
+	background-color: $windows;
+	width: $width;
+	height: 25%;
+	margin-bottom: $margin-bottom;
+	border: 0.1rem solid $black;
+	box-shadow: inset 0.1rem 0.1rem 0 0 $white, inset -0.1rem -0.1rem 0 0 $white;
+}
+
+// MAIN
+
+@mixin section-style($evenodd, $bg-color, $bordercolor) {
+	&:nth-child(#{$evenodd}) {
+		background-color: $bg-color;
+		h2 {
+			border-bottom: 0.5rem solid $bordercolor;
+		}
+	}
+}
+
+@mixin colored-first-letter {
+	p::first-letter {
+		text-shadow: -1px -1px $yellow;
+		color: $windows;
+	}
+}
